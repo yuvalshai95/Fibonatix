@@ -3,8 +3,9 @@ import { NavLink, Link } from 'react-router-dom';
 
 // Services
 import { storageService } from '../services/async-storage.service'
-import logo from '../assets/imgs/graduation-hat.svg'
+
 // Icons
+import logo from '../assets/imgs/graduation-hat.svg'
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 
@@ -21,13 +22,11 @@ export function AppHeader() {
     }, [])
 
     useEffect(() => {
-        isDarkMode ?
-            document.body.classList.add('dark-mode') :
-            document.body.classList.remove('dark-mode')
+        isDarkMode ? document.body.classList.add('dark-mode')
+            : document.body.classList.remove('dark-mode')
 
-        isDarkMode ?
-            storageService.saveToStorage('theme', 'dark-mode') :
-            storageService.saveToStorage('theme', 'light-mode')
+        isDarkMode ? storageService.saveToStorage('theme', 'dark-mode')
+            : storageService.saveToStorage('theme', 'light-mode')
 
     }, [isDarkMode])
 
@@ -42,7 +41,8 @@ export function AppHeader() {
 
     return (
         <header className='app-header'>
-            <div className={`screen-overlay ${(isMenuOpen) ? 'open' : ''}`} onClick={toggleMenu}>
+            <div className={`screen-overlay ${(isMenuOpen) ? 'open' : ''}`}
+                onClick={toggleMenu}>
             </div>
 
             <section className='header-content main-layout'>
@@ -52,6 +52,7 @@ export function AppHeader() {
                 </div>
 
                 <div className="header-right flex">
+
                     {/* Dark mode toggle */}
                     <div onClick={toggleDarkMode} className="toggle-dark-mode">
                         <div className="toggle-track">

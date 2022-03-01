@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-
 // Cmps
 import { HomePage } from './pages/HomePage'
 import { StudentEdit } from './pages/StudentEdit'

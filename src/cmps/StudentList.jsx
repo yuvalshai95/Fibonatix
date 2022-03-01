@@ -3,7 +3,11 @@ import { StudentPreview } from "./StudentPreview";
 
 export const StudentList = ({ students, handleRemoveStudent, onToggleSelect, handleEditStudent }) => {
     if (!students.length)
-        return <p className="students-list-empty  main-layout flex justify-center">No students available</p>;
+        return (
+            <p className="students-list-empty  main-layout flex justify-center">
+                No students available
+            </p>
+        );
 
     return (
         <section className="student-list-container main-layout flex">

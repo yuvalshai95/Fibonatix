@@ -13,7 +13,9 @@ export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, h
 
     return (
         <div className="student-preview-container flex column align-center">
-            {gender === 'male' ? <BsGenderMale className="gender male" /> : <BsGenderFemale className="gender female" />}
+            {gender === 'male' ? <BsGenderMale className="gender male" />
+                : <BsGenderFemale className="gender female" />}
+
             <div className="preview-info flex column align-center">
                 <img className="student-img" src={imgUrl} alt="student-img" />
                 <p className="student-name">{`${fullName}, ${age}`}</p>
@@ -23,7 +25,6 @@ export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, h
             </div>
 
             <div className="btns-container flex align-center">
-
                 <input
                     className="checkbox"
                     type="checkbox"
@@ -33,15 +34,13 @@ export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, h
 
                 <button
                     className="primary-btn edit-btn"
-                    onClick={() => { handleEditStudent(id) }}
-                >
+                    onClick={() => { handleEditStudent(id) }}>
                     Edit
                 </button>
 
                 <button
                     className="delete-btn remove-btn"
-                    onClick={onRemoveStudent}
-                >
+                    onClick={onRemoveStudent}>
                     Remove
                 </button>
             </div>
