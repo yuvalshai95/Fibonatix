@@ -1,5 +1,7 @@
 export const utilService = {
   makeId,
+  getRandomInt,
+  getRandomUniversity,
 };
 
 function makeId(length = 6) {
@@ -11,4 +13,25 @@ function makeId(length = 6) {
   }
 
   return txt;
+}
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+
+  //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+function getRandomUniversity() {
+  const universities = [
+    'Harvard University',
+    'University of Cambridge',
+    'Columbia University',
+    'University of Oxford',
+    'Yale University',
+    'Stanford University',
+    'Princeton University',
+  ];
+  return universities[getRandomInt(0, universities.length)];
 }
