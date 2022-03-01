@@ -10,11 +10,12 @@ import { studentService } from '../services/student.service';
 import { showUserMsg } from '../services/event-bus.service'
 
 export const HomePage = () => {
+  const navigate = useNavigate()
   const [students, setStudents] = useState([])
   const [pageSize, setPageSize] = useState(6)
   const [currentPage, setCurrentPage] = useState(0)
   const [numOfPages, setNumOfPages] = useState(0)
-  // const [selectedStudents, setSelectedStudents] = useState([])
+
 
 
   useEffect(() => {
@@ -61,7 +62,8 @@ export const HomePage = () => {
       else return student
     })
     setStudents(updatedStudents)
-    showUserMsg(`Student ${student.fullName} was selected`)
+    const txt = student.isSelected ? `Removed selection` : `${student.fullName} was selected`
+    showUserMsg(txt)
   }
 
 
@@ -71,7 +73,7 @@ export const HomePage = () => {
       if (student.isSelected) selectedCounter++
     })
     if (!selectedCounter) {
-      showUserMsg('No students selected!', 'warning')
+      showUserMsg('You must select first!', 'warning')
     } else {
       const updatedStudents = students.filter(student => !student.isSelected)
       studentService.setStudents(updatedStudents)
@@ -81,12 +83,16 @@ export const HomePage = () => {
 
   }
 
+  const handleEditStudent = (id) => {
+    navigate(`edit/${id}`)
+  }
+
   return (
     <>
-      <Outlet />
+      <Outlet context={onLoadStudents} />
       <section className="home-page flex column align-center">
 
-        <div className="flex justify-center align-center">
+        <div className="remove-selected-btn flex justify-center align-center">
           <button className="primary-btn"
             onClick={onRemoveSelected}>
             Remove Selected
@@ -97,6 +103,7 @@ export const HomePage = () => {
           students={StudentsToShow()}
           handleRemoveStudent={handleRemoveStudent}
           onToggleSelect={onToggleSelect}
+          handleEditStudent={handleEditStudent}
         />
 
         <div className="pagination">

@@ -2,6 +2,14 @@
     padding-top: 80px;
     min-height: 100vh;
 
+    .remove-selected-btn {
+        margin: 10px 0;
+
+        @media (min-width: 500px) {
+            margin: 25px 0;
+        }
+    }
+
     .pagination {
         margin: rem(15px) 0;
     }

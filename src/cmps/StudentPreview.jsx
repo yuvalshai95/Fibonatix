@@ -1,4 +1,4 @@
-export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect }) => {
+export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, handleEditStudent }) => {
 
     const { age, city, email, fullName, gender, id, imgUrl, isSelected, university } = student
     /* 
@@ -30,7 +30,7 @@ export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect })
                 <p className="student-email">{email}</p>
             </div>
 
-            <div className="btns-container flex">
+            <div className="btns-container flex align-center">
 
                 <input
                     className="checkbox"
@@ -41,7 +41,7 @@ export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect })
 
                 <button
                     className="primary-btn edit-btn"
-                // onClick={() => { handleEditUser(user.id) }}
+                    onClick={() => { handleEditStudent(id) }}
                 >
                     Edit
                 </button>

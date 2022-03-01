@@ -1,7 +1,7 @@
 // Cmps
 import { StudentPreview } from "./StudentPreview";
 
-export const StudentList = ({ students, handleRemoveStudent, onToggleSelect }) => {
+export const StudentList = ({ students, handleRemoveStudent, onToggleSelect, handleEditStudent }) => {
     if (!students.length)
         return <p className="students-list-empty  main-layout flex justify-center">No students available</p>;
 
@@ -14,8 +14,7 @@ export const StudentList = ({ students, handleRemoveStudent, onToggleSelect }) =
                         student={student}
                         handleRemoveStudent={handleRemoveStudent}
                         onToggleSelect={onToggleSelect}
-                    // handleEditUser={handleEditUser} 
-                    // handleRemoveUser={handleRemoveUser} 
+                        handleEditStudent={handleEditStudent}
                     />
                 ))}
             </div>

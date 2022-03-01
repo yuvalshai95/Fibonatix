@@ -4,7 +4,7 @@ import {utilService} from './util.service.js';
 
 export const studentService = {
   query,
-  //   getStudentById,
+  getStudentById,
   update,
   remove,
   setStudents,
@@ -26,6 +26,10 @@ function update(student) {
 
 function setStudents(students) {
   storageService.saveToStorage(STORAGE_KEY, students);
+}
+
+async function getStudentById(id) {
+  return await storageService.get(STORAGE_KEY, id);
 }
 
 async function _loadStudents() {

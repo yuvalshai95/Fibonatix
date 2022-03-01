@@ -1,0 +1,75 @@
+.student-edit-screen-overlay {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5;
+
+    .student-edit-container {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        height: fit-content;
+        width: 320px;
+        background-color: var(--card-background-color);
+        color: black;
+        padding: 10px;
+        text-align: center;
+
+        @media (min-width: 450px) {
+            width: 390px;
+        }
+
+        @media (min-width: 600px) {
+            width: 480px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+        }
+
+        .form-content {
+            display: flex;
+            flex-direction: column;
+            align-items: self-end;
+            gap: 5px;
+
+            .form-btns {
+                margin: 10px 0;
+                align-self: center;
+                margin-left: 15px;
+            }
+
+            label {
+                display: flex;
+                gap: 10px;
+                color: var(--text-color);
+            }
+
+            input {
+                outline: none;
+                padding: 5px;
+                border: none;
+                min-width: 200px;
+            }
+
+            p {
+                color: red;
+            }
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-family: marvel;
+            font-size: 50px;
+        }
+    }
+}
