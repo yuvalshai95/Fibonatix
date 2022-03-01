@@ -5,17 +5,30 @@ import {utilService} from './util.service.js';
 export const studentService = {
   query,
   //   getStudentById,
-  //   updateStudent,
-  //   removeStudent,
+  update,
+  remove,
+  setStudents,
 };
 
 const STORAGE_KEY = 'studentDB';
 
 async function query() {
-  return (await storageService.query(STORAGE_KEY)) || _setStudents();
+  return (await storageService.query(STORAGE_KEY)) || _loadStudents();
 }
 
-async function _setStudents() {
+async function remove(id) {
+  return storageService.remove(STORAGE_KEY, id);
+}
+
+function update(student) {
+  return storageService.put(STORAGE_KEY, student);
+}
+
+function setStudents(students) {
+  storageService.saveToStorage(STORAGE_KEY, students);
+}
+
+async function _loadStudents() {
   const {data} = await axios.get('https://randomuser.me/api/?results=20');
   const students = data.results.map(student => {
     const miniStudents = {

@@ -16,7 +16,7 @@ export function UserMsg() {
             if (timeoutId.current) clearTimeout(timeoutId.current)
             timeoutId.current = setTimeout(() => {
                 setMsg(null)
-            }, 2500)
+            }, 3000)
         })
 
         return () => {

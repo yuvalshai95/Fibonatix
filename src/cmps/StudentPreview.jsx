@@ -1,4 +1,4 @@
-export const StudentPreview = ({ student }) => {
+export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect }) => {
 
     const { age, city, email, fullName, gender, id, imgUrl, isSelected, university } = student
     /* 
@@ -13,9 +13,10 @@ export const StudentPreview = ({ student }) => {
         university: "University of Oxford"
     */
 
-    // const onRemoveUser = () => {
-    //     handleRemoveUser(user.id)
-    // }
+    const onRemoveStudent = () => {
+        handleRemoveStudent(id)
+    }
+
 
 
 
@@ -34,7 +35,8 @@ export const StudentPreview = ({ student }) => {
                 <input
                     className="checkbox"
                     type="checkbox"
-                // onChange={() => { onToggleCheckbox(student) }}
+                    onChange={() => { onToggleSelect(student) }}
+                    checked={isSelected ? 'checked' : ''}
                 />
 
                 <button
@@ -46,7 +48,7 @@ export const StudentPreview = ({ student }) => {
 
                 <button
                     className="delete-btn remove-btn"
-                // onClick={onRemoveUser}
+                    onClick={onRemoveStudent}
                 >
                     Remove
                 </button>
