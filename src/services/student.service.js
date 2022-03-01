@@ -17,7 +17,6 @@ async function query() {
 
 async function _setStudents() {
   const {data} = await axios.get('https://randomuser.me/api/?results=20');
-  console.log('data', data);
   const students = data.results.map(student => {
     const miniStudents = {
       id: utilService.makeId(),
@@ -28,6 +27,7 @@ async function _setStudents() {
       isSelected: false,
       age: utilService.getRandomInt(20, 31),
       university: utilService.getRandomUniversity(),
+      imgUrl: student.picture.medium,
     };
     return miniStudents;
   });

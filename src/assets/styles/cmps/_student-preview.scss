@@ -1,0 +1,44 @@
+.student-preview-container {
+    width: 280px;
+    background-color: var(--card-background-color);
+    border: 1px solid lightgray;
+    box-shadow: rgb(14 30 37 / 0%) 0px 2px 4px 0px, rgb(14 30 37 / 26%) 0px 2px 5px 0px;
+
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.04);
+        box-shadow: rgb(14 30 37 / 0%) 0px 2px 4px 0px, rgb(14 30 37 / 26%) 0px 2px 11px 4px;
+    }
+
+    .preview-info {
+        width: 100%;
+
+        padding: 15px;
+        color: var(--text-color);
+
+        .student-name {
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        .student-address {
+            font-size: 18px;
+        }
+
+        .student-university {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .student-img {
+            width: 90px;
+            height: 90px;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+    }
+    .btns-container {
+        margin: 10px 0;
+        gap: 10px;
+    }
+}
