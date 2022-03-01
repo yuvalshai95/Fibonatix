@@ -1,4 +1,8 @@
-.home-page{
+.home-page {
     padding-top: 80px;
-    min-height: 100vh;  
+    min-height: 100vh;
+
+    .pagination {
+        margin: rem(15px) 0;
+    }
 }

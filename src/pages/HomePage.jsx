@@ -34,10 +34,14 @@ export const HomePage = () => {
     return students.slice(startIdx, endIdx)
   }
 
+  const handlePageChange = (selectedPage) => {
+    setCurrentPage(selectedPage)
+  }
+
   return (
     <>
       <Outlet />
-      <section className="home-page">
+      <section className="home-page flex column align-center">
 
         <StudentList
           students={StudentsToShow()}
@@ -45,7 +49,11 @@ export const HomePage = () => {
 
         <div className="pagination">
           {[...new Array(4).fill(0)].map((num, idx) => (
-            <button key={idx} className={`primary-btn ${currentPage === idx ? "active" : ""}`}>
+            <button
+              key={idx}
+              className={`primary-btn ${currentPage === idx ? "active" : ""}`}
+              onClick={() => { handlePageChange(idx) }}
+            >
               {idx + 1}
             </button>
           ))}

@@ -32,9 +32,9 @@ export const StudentPreview = ({ student }) => {
             <div className="btns-container flex">
 
                 <input
+                    className="checkbox"
                     type="checkbox"
                 // onChange={() => { onToggleCheckbox(student) }}
-
                 />
 
                 <button

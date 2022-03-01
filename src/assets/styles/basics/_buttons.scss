@@ -3,7 +3,7 @@ button {
 }
 
 .primary-btn {
-    background-color: #0079bf;
+    background-color: #259898;
     border: none;
     color: #fff;
     margin-right: 4px;
@@ -11,8 +11,8 @@ button {
     border-radius: 3px;
     font-size: rem(14px);
 
-    &:hover { 
-        background-color: #026aa7;
+    &:hover {
+        background-color: #167272;
     }
 }
 
@@ -25,8 +25,7 @@ button {
     border-radius: 3px;
     font-size: rem(14px);
 
-    &:hover { 
+    &:hover {
         background-color: #853322;
     }
 }
-
