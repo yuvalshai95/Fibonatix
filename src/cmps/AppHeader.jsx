@@ -3,9 +3,10 @@ import { NavLink, Link } from 'react-router-dom';
 
 // Services
 import { storageService } from '../services/async-storage.service'
-
+import logo from '../assets/imgs/graduation-hat.svg'
 // Icons
 import { GiHamburgerMenu } from 'react-icons/gi';
+
 
 export function AppHeader() {
     const [isMenuOpen, setMenuState] = useState(false)
@@ -45,29 +46,35 @@ export function AppHeader() {
             </div>
 
             <section className='header-content main-layout'>
-                <Link className="logo" to="/">Fibonatix App</Link>
-
-                {/* Dark mode toggle */}
-                <div onClick={toggleDarkMode} className="toggle-dark-mode">
-                    <div className="toggle-track">
-                        <div className={`dark-mode-icon-off ${isDarkMode ? 'dark-on' : 'dark-off'}`}>
-                            <span className="icon-off flex align-center justify-center">🌜</span>
-                        </div>
-                        <div className={`dark-mode-icon-on ${isDarkMode ? 'dark-on' : 'dark-off'}`}>
-                            <span className="icon-on flex align-center justify-center">🌞</span>
-                        </div>
-                        <div className={`toggle-track-thumb ${isDarkMode ? 'dark-on' : 'dark-off'}`}></div>
-                    </div>
+                <div className="logo-wrapper flex">
+                    <Link className="logo" to="/"><img src={logo} alt="logo" /></Link>
+                    <p className="logo">Students</p>
                 </div>
 
-                <nav className='nav-container'>
-                    <ul className={`nav-links clean-list ${(isMenuOpen) ? 'open' : ''}`}>
-                        <NavLink to="/"> <li>Home</li></NavLink>
-                    </ul>
-                </nav>
-                <button className="hamburger-btn" onClick={toggleMenu}>
-                    <GiHamburgerMenu className="hamburger-icon" />
-                </button>
+                <div className="header-right flex">
+                    {/* Dark mode toggle */}
+                    <div onClick={toggleDarkMode} className="toggle-dark-mode">
+                        <div className="toggle-track">
+                            <div className={`dark-mode-icon-off ${isDarkMode ? 'dark-on' : 'dark-off'}`}>
+                                <span className="icon-off flex align-center justify-center">🌜</span>
+                            </div>
+                            <div className={`dark-mode-icon-on ${isDarkMode ? 'dark-on' : 'dark-off'}`}>
+                                <span className="icon-on flex align-center justify-center">🌞</span>
+                            </div>
+                            <div className={`toggle-track-thumb ${isDarkMode ? 'dark-on' : 'dark-off'}`}></div>
+                        </div>
+                    </div>
+
+                    <nav className='nav-container'>
+                        <ul className={`nav-links clean-list ${(isMenuOpen) ? 'open' : ''}`}>
+                            <NavLink to="/"> <li>Home</li></NavLink>
+                        </ul>
+                    </nav>
+
+                    <button className="hamburger-btn" onClick={toggleMenu}>
+                        <GiHamburgerMenu className="hamburger-icon" />
+                    </button>
+                </div>
             </section>
         </header>
     );

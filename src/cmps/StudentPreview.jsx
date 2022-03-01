@@ -1,32 +1,24 @@
+// Icons
+import { BsGenderFemale } from 'react-icons/bs';
+import { BsGenderMale } from 'react-icons/bs'
+
+
 export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, handleEditStudent }) => {
 
-    const { age, city, email, fullName, gender, id, imgUrl, isSelected, university } = student
-    /* 
-        age: 23
-        city: "Nice"
-        email: "lorenzo.lefevre@example.com"
-        fullName: "Lorenzo Lefevre"
-        gender: "male"
-        id: "1Dt5CJ"
-        imgUrl: "https://randomuser.me/api/portraits/med/men/68.jpg"
-        isSelected: false
-        university: "University of Oxford"
-    */
+    const { age, country, email, fullName, gender, id, imgUrl, isSelected, university } = student
 
     const onRemoveStudent = () => {
         handleRemoveStudent(id)
     }
 
-
-
-
     return (
         <div className="student-preview-container flex column align-center">
+            {gender === 'male' ? <BsGenderMale className="gender male" /> : <BsGenderFemale className="gender female" />}
             <div className="preview-info flex column align-center">
                 <img className="student-img" src={imgUrl} alt="student-img" />
                 <p className="student-name">{`${fullName}, ${age}`}</p>
                 <p className="student-university">{university}</p>
-                <p className="student-city">{city}</p>
+                <p className="student-country">{country}</p>
                 <p className="student-email">{email}</p>
             </div>
 

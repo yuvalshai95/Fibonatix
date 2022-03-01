@@ -40,7 +40,7 @@ async function _loadStudents() {
       fullName: `${student.name.first} ${student.name.last}`,
       email: student.email,
       gender: student.gender,
-      city: student.location.city,
+      country: student.location.country,
       isSelected: false,
       age: utilService.getRandomInt(20, 31),
       university: utilService.getRandomUniversity(),

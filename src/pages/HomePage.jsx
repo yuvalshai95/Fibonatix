@@ -41,15 +41,16 @@ export const HomePage = () => {
     return students.slice(startIdx, endIdx)
   }
 
-  const onRemoveStudent = (selectedPage) => {
+  const onChangePage = (selectedPage) => {
     setCurrentPage(selectedPage)
   }
 
-  const handleRemoveStudent = (studentId) => {
+  const onRemoveStudent = (studentId) => {
     if (!studentId) return
     studentService.remove(studentId)
     const updatedStudents = students.filter(student => (student.id !== studentId))
     setStudents(updatedStudents)
+    showUserMsg(`Student removed successfully`, 'success')
   }
 
 
@@ -101,7 +102,7 @@ export const HomePage = () => {
 
         <StudentList
           students={StudentsToShow()}
-          handleRemoveStudent={handleRemoveStudent}
+          handleRemoveStudent={onRemoveStudent}
           onToggleSelect={onToggleSelect}
           handleEditStudent={handleEditStudent}
         />
@@ -111,7 +112,7 @@ export const HomePage = () => {
             <button
               key={idx}
               className={`primary-btn ${currentPage === idx ? "active" : ""}`}
-              onClick={() => { onRemoveStudent(idx) }}
+              onClick={() => { onChangePage(idx) }}
             >
               {idx + 1}
             </button>

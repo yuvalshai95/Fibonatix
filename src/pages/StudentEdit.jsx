@@ -28,12 +28,12 @@ export const StudentEdit = () => {
 
   }
 
-  const onSubmit = async ({ fullName, university, city, email, age }) => {
+  const onSubmit = async ({ fullName, university, country, email, age }) => {
     const studentToUpdate = {
       id: student.id,
       fullName,
       university,
-      city,
+      country,
       email,
       age: +age,
       imgUrl: student.imgUrl,
@@ -93,18 +93,18 @@ export const StudentEdit = () => {
             </div>
 
             <div className="input-wrapper">
-              <label>*City:
+              <label>*Country:
                   <input type="text"
-                  defaultValue={student.city}
-                  placeholder="City"
-                  {...register("city", {
+                  defaultValue={student.country}
+                  placeholder="Country"
+                  {...register("country", {
                     required: "This field is required",
                     minLength: { value: 3, message: "minimum length is 3" },
                     maxLength: { value: 25, message: "maximun length is 25" }
                   })}
                 />
               </label>
-              <p>{errors.city?.message}</p>
+              <p>{errors.country?.message}</p>
             </div>
 
             <div className="input-wrapper">
