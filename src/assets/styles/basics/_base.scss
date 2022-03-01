@@ -1,0 +1,64 @@
+:root {
+    // Light mode colors
+    --background-color: #fafafa;
+    --header-background-color: #d8d2cb;
+    --card-background-color: #f3f3f3;
+    --user-msg-background-color: #d8d2cb;
+    --text-color: #524a4e;
+    --text-color-active: #259898;
+    --user-msg-background-color: #37393d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    line-height: 1.6;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue,
+        sans-serif;
+    background-color: var(--background-color);
+
+    transition: all ease-in-out 0.4s;
+
+    &.dark-mode {
+        // Dark mode colors
+        --background-color: #1b1b1b;
+        --header-background-color: #37393d;
+        --card-background-color: #37393d;
+        --text-color: #fff;
+        --user-msg-background-color: #fafafa;
+    }
+}
+
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
+    margin: 0 0 em(20px, 50px);
+    font-weight: 400;
+}
+
+h1 {
+    font-size: rem(40px);
+}
+
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
