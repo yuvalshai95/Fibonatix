@@ -15,7 +15,7 @@ function makeId(length = 6) {
   return txt;
 }
 
-function getRandomInt(min, max) {
+function getRandomInt(min:number, max:number) {
   min = Math.ceil(min);
   max = Math.floor(max);
 

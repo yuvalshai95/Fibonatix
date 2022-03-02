@@ -1,3 +1,4 @@
+
 export const storageService = {
   query,
   get,
@@ -8,8 +9,9 @@ export const storageService = {
   loadFromStorage,
 };
 
-function query(entityType, delay = 1) {
-  var entities = JSON.parse(localStorage.getItem(entityType)) || null;
+function query(entityType:string, delay = 1) {
+  var entities = localStorage.getItem(entityType)
+  entities = entities ? JSON.parse(entities) : null
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(entities);
@@ -17,37 +19,37 @@ function query(entityType, delay = 1) {
   });
 }
 
-function get(entityType, entityId) {
-  return query(entityType).then(entities => entities.find(entity => entity.id === entityId));
+ function get(entityType:string, entityId:string){
+  return query(entityType).then((entities:any) => entities.find((entity:any) => entity.id === entityId));
 }
 
-function post(entityType, newEntity) {
+function post(entityType:string, newEntity:any) {
   newEntity.id = _makeId();
-  return query(entityType).then(entities => {
+  return query(entityType).then((entities:any) => {
     entities.push(newEntity);
     _save(entityType, entities);
     return newEntity;
   });
 }
 
-function put(entityType, updatedEntity) {
-  return query(entityType).then(entities => {
-    const idx = entities.findIndex(entity => entity.id === updatedEntity.id);
+function put(entityType:string, updatedEntity:any) {
+  return query(entityType).then((entities:any) => {
+    const idx = entities.findIndex((entity:any) => entity.id === updatedEntity.id);
     entities.splice(idx, 1, updatedEntity);
     _save(entityType, entities);
     return updatedEntity;
   });
 }
 
-function remove(entityType, entityId) {
-  return query(entityType).then(entities => {
-    const idx = entities.findIndex(entity => entity.id === entityId);
+function remove(entityType:string, entityId:string) {
+  return query(entityType).then((entities:any) => {
+    const idx = entities.findIndex((entity:any) => entity.id === entityId);
     entities.splice(idx, 1);
     _save(entityType, entities);
   });
 }
 
-function _save(entityType, entities) {
+function _save(entityType:string, entities:any) {
   localStorage.setItem(entityType, JSON.stringify(entities));
 }
 
@@ -60,11 +62,11 @@ function _makeId(length = 5) {
   return text;
 }
 
-function saveToStorage(key, val) {
+function saveToStorage(key:string, val:any) {
   localStorage.setItem(key, JSON.stringify(val));
 }
 
-function loadFromStorage(key) {
+function loadFromStorage(key:string) {
   var val = localStorage.getItem(key);
-  return JSON.parse(val);
+  return (val) ? JSON.parse(val) : null;
 }

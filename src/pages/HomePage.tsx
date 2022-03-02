@@ -9,12 +9,15 @@ import { StudentList } from '../cmps/StudentList';
 import { studentService } from '../services/student.service';
 import { showUserMsg } from '../services/event-bus.service'
 
+// Model
+import {Student} from '../models/student.model'
+
 export const HomePage = () => {
   const navigate = useNavigate()
-  const [students, setStudents] = useState([])
-  const [pageSize, setPageSize] = useState(6)
-  const [currentPage, setCurrentPage] = useState(0)
-  const [numOfPages, setNumOfPages] = useState(0)
+  const [students, setStudents] = useState<Array<Student>>([])
+  const [pageSize, setPageSize] = useState<number>(6)
+  const [currentPage, setCurrentPage] = useState<number>(0)
+  const [numOfPages, setNumOfPages] = useState<number>(0)
 
 
 
@@ -27,7 +30,7 @@ export const HomePage = () => {
   }, [students])
 
   const onLoadStudents = async () => {
-    const students = await studentService.query()
+    const students:any = await studentService.query()
     setStudents(students)
   }
 
@@ -41,11 +44,11 @@ export const HomePage = () => {
     return students.slice(startIdx, endIdx)
   }
 
-  const onChangePage = (selectedPage) => {
+  const onChangePage = (selectedPage:number) => {
     setCurrentPage(selectedPage)
   }
 
-  const onRemoveStudent = (studentId) => {
+  const onRemoveStudent = (studentId:string) => {
     if (!studentId) return
     studentService.remove(studentId)
     const updatedStudents = students.filter(student => (student.id !== studentId))
@@ -54,7 +57,7 @@ export const HomePage = () => {
   }
 
 
-  const onToggleSelect = async (student) => {
+  const onToggleSelect = async (student:Student) => {
     if (!student) return
     const studentToUpdate = { ...student, isSelected: !student.isSelected }
     const updatedStudent = await studentService.update(studentToUpdate)
@@ -84,7 +87,7 @@ export const HomePage = () => {
 
   }
 
-  const handleEditStudent = (id) => {
+  const handleEditStudent = (id:string) => {
     navigate(`edit/${id}`)
   }
 

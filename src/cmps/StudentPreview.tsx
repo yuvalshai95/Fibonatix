@@ -2,8 +2,17 @@
 import { BsGenderFemale } from 'react-icons/bs';
 import { BsGenderMale } from 'react-icons/bs'
 
+// Model
+import {Student} from '../models/student.model'
 
-export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, handleEditStudent }) => {
+type Props ={
+    student:Student,
+    handleRemoveStudent:any,
+    onToggleSelect:any,
+    handleEditStudent:any
+}
+
+export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, handleEditStudent }:Props) => {
 
     const { age, country, email, fullName, gender, id, imgUrl, isSelected, university } = student
 
@@ -29,7 +38,7 @@ export const StudentPreview = ({ student, handleRemoveStudent, onToggleSelect, h
                     className="checkbox"
                     type="checkbox"
                     onChange={() => { onToggleSelect(student) }}
-                    checked={isSelected ? 'checked' : ''}
+                    checked={isSelected}
                 />
 
                 <button

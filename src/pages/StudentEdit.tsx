@@ -9,17 +9,20 @@ import { studentService } from '../services/student.service';
 // Icons
 import { MdOutlineClose } from 'react-icons/md'
 
+// Model
+import {Student} from '../models/student.model'
+
 export const StudentEdit = () => {
-  const { studentId } = useParams();
+  const { studentId }:any = useParams();
   const navigate = useNavigate()
-  const [student, setStudent] = useState(null)
+  const [student, setStudent] = useState<Student>({id:'',fullName:'',university:'',country:'',email:'',age:0,gender:'',isSelected:false,imgUrl:''})
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onLoadStudents = useOutletContext()
+  const onLoadStudents:any = useOutletContext()
 
 
   useEffect(() => {
     onLoadStudent()
-    return () => { setStudent(null) }
+    return () => { setStudent({id:'',fullName:'',university:'',country:'',email:'',age:0,gender:'',isSelected:false,imgUrl:''}) }
   }, [])
 
   const onLoadStudent = async () => {
@@ -28,7 +31,7 @@ export const StudentEdit = () => {
 
   }
 
-  const onSubmit = async ({ fullName, university, country, email, age }) => {
+  const onSubmit = async ({ fullName, university, country, email, age }:any) => {
     const studentToUpdate = {
       id: student.id,
       fullName,

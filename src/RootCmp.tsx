@@ -7,8 +7,7 @@ import { StudentEdit } from './pages/StudentEdit'
 import { AppHeader } from './cmps/AppHeader';
 import { UserMsg } from './cmps/UserMsg';
 
-function RootCmp() {
-
+const RootCmp: React.FC = ()=>{
   return (
     <div className='root-cmp'>
       <AppHeader />

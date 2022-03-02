@@ -6,12 +6,17 @@ import { eventBusService } from '../services/event-bus.service'
 // Icons
 import { MdOutlineClose } from 'react-icons/md'
 
+type message = {
+    txt:string,
+    type:string
+}
+
 export function UserMsg() {
-    const [msg, setMsg] = useState(null)
-    const timeoutId = useRef();
+    const [msg, setMsg] = useState<message| null>(null);
+    const timeoutId:any = useRef();
 
     useEffect(() => {
-        const removeEvent = eventBusService.on('show-user-msg', (msg) => {
+        const removeEvent = eventBusService.on('show-user-msg', (msg:message) => {
             setMsg({ ...msg })
             if (timeoutId.current) clearTimeout(timeoutId.current)
             timeoutId.current = setTimeout(() => {

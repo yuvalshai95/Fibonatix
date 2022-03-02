@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 // Services
 import { storageService } from '../services/async-storage.service'
 
+
 // Icons
-import logo from '../assets/imgs/graduation-hat.svg'
+// import logo from '../assets/imgs/graduation-hat.svg'
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 
-export function AppHeader() {
+export const AppHeader: React.FC = ()=> {
     const [isMenuOpen, setMenuState] = useState(false)
     const [isDarkMode, setIsDarkMode] = useState(false)
 
@@ -47,7 +48,7 @@ export function AppHeader() {
 
             <section className='header-content main-layout'>
                 <div className="logo-wrapper flex">
-                    <Link className="logo" to="/"><img src={logo} alt="logo" /></Link>
+                    <Link className="logo" to="/"><img src={require('../assets/imgs/graduation-hat.svg').default} alt="logo" /></Link>
                     <p className="logo">Students</p>
                 </div>
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
-import {storageService} from './async-storage.service.js';
-import {utilService} from './util.service.js';
+import {storageService} from './async-storage.service';
+import {utilService} from './util.service';
+import {Student} from '../models/student.model';
 
 export const studentService = {
   query,
@@ -16,25 +17,25 @@ async function query() {
   return (await storageService.query(STORAGE_KEY)) || _loadStudents();
 }
 
-async function remove(id) {
+async function remove(id:string) {
   return storageService.remove(STORAGE_KEY, id);
 }
 
-function update(student) {
+function update(student:Student) {
   return storageService.put(STORAGE_KEY, student);
 }
 
-function setStudents(students) {
+function setStudents(students:Array<Student>) {
   storageService.saveToStorage(STORAGE_KEY, students);
 }
 
-async function getStudentById(id) {
+async function getStudentById(id:string) {
   return await storageService.get(STORAGE_KEY, id);
 }
 
 async function _loadStudents() {
   const {data} = await axios.get('https://randomuser.me/api/?results=20');
-  const students = data.results.map(student => {
+  const students = data.results.map((student:any) => {
     const miniStudents = {
       id: utilService.makeId(),
       fullName: `${student.name.first} ${student.name.last}`,
